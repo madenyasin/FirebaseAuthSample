@@ -77,4 +77,5 @@ dependencies {
     ksp(libs.hilt.kapt)
 
     implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.auth)
 }
