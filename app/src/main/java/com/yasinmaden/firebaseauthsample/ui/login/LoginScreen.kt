@@ -34,6 +34,7 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.repeatOnLifecycle
 import com.yasinmaden.firebaseauthsample.R
+import com.yasinmaden.firebaseauthsample.ui.components.SocialMediaButton
 import com.yasinmaden.firebaseauthsample.ui.theme.displayFontFamily
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.emptyFlow
@@ -103,39 +104,9 @@ fun LoginScreen(
             horizontalArrangement = Arrangement.SpaceEvenly,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Button(
-                onClick = { /*TODO*/ },
-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFF4F4F4)),
-                shape = RoundedCornerShape(10.dp)
-            ) {
-                Image(
-                    painter = painterResource(id = R.drawable.google),
-                    contentDescription = "facebook",
-                    Modifier.size(27.dp),
-                )
-            }
-            Button(
-                onClick = { /*TODO*/ },
-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFF4F4F4)),
-                shape = RoundedCornerShape(10.dp)
-            ) {
-                Image(
-                    painter = painterResource(id = R.drawable.facebook),
-                    contentDescription = "facebook",
-                    Modifier.size(27.dp),
-                )
-            }
-            Button(
-                onClick = { /*TODO*/ },
-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFF4F4F4)),
-                shape = RoundedCornerShape(10.dp)
-            ) {
-                Image(
-                    painter = painterResource(id = R.drawable.twitter),
-                    contentDescription = "facebook",
-                    Modifier.size(27.dp),
-                )
-            }
+            SocialMediaButton(onClick = { /*TODO*/ }, ImageResId = R.drawable.google, contentDescription = "google")
+            SocialMediaButton(onClick = { /*TODO*/ }, ImageResId = R.drawable.facebook, contentDescription = "facebook")
+            SocialMediaButton(onClick = { /*TODO*/ }, ImageResId = R.drawable.twitter, contentDescription = "twitter")
         }
 
         Spacer(Modifier.height(32.dp))
