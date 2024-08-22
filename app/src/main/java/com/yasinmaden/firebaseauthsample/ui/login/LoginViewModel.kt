@@ -103,5 +103,6 @@ object LoginContract {
     sealed class UiEffect {
         data class ShowToast(val message: String) : UiEffect()
         data object GoToMainScreen : UiEffect()
+        data object GoToSignUpScreen : UiEffect()
     }
 }
