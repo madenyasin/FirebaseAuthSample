@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Checkbox
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -72,10 +73,12 @@ fun SignUpScreen(
             email = uiState.email,
             password = uiState.password,
             confirmPassword = uiState.confirmPassword,
+            checkboxState = uiState.checkboxState,
             onEmailChange = { onAction(SignUpContract.UiAction.ChangeEmail(it)) },
             onPasswordChange = { onAction(SignUpContract.UiAction.ChangePassword(it)) },
             onConfirmPasswordChange = { onAction(SignUpContract.UiAction.ChangeConfirmPassword(it)) },
             onSignUpClick = { onAction(SignUpContract.UiAction.SignUpClick) },
+            onCheckboxChange = { onAction(SignUpContract.UiAction.ChangeCheckbox(it)) }
         )
     }
 
@@ -86,10 +89,12 @@ fun EmailAndPasswordContent(
     email: String,
     password: String,
     confirmPassword: String,
+    checkboxState: Boolean,
     onEmailChange: (String) -> Unit,
     onPasswordChange: (String) -> Unit,
     onConfirmPasswordChange: (String) -> Unit,
     onSignUpClick: () -> Unit,
+    onCheckboxChange: (Boolean) -> Unit,
 ) {
     OutlinedTextField(
         modifier = Modifier
@@ -123,7 +128,17 @@ fun EmailAndPasswordContent(
         onValueChange = onConfirmPasswordChange,
     )
     Spacer(Modifier.height(16.dp))
-    PolicyContent()
+    Row (verticalAlignment = Alignment.CenterVertically){
+        Checkbox(checked = checkboxState, onCheckedChange = {onCheckboxChange(it)})
+        Text(text = "I understood the", color = Color(0xFF888888), fontSize = 16.sp)
+        Spacer(Modifier.width(5.dp))
+        Text(
+            text = "terms & policy.",
+            modifier = Modifier.clickable {  },
+            color = Color(0xFF00B140),
+            fontSize = 16.sp
+        )
+    }
     Spacer(Modifier.height(16.dp))
 
     Button(
@@ -152,16 +167,3 @@ fun SignUpScreenPreview() {
     )
 }
 
-@Composable
-fun PolicyContent() {
-    Row {
-        Text(text = "I understood the", color = Color(0xFF888888), fontSize = 16.sp)
-        Spacer(Modifier.width(5.dp))
-        Text(
-            text = "terms & policy.",
-            modifier = Modifier.clickable {  },
-            color = Color(0xFF00B140),
-            fontSize = 16.sp
-        )
-    }
-}

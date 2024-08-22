@@ -37,6 +37,7 @@ class SignUpViewModel @Inject constructor(
             is SignUpContract.UiAction.ChangeEmail -> updateUiState { copy(email = uiAction.email) }
             is SignUpContract.UiAction.ChangePassword -> updateUiState { copy(password = uiAction.password) }
             is SignUpContract.UiAction.ChangeConfirmPassword -> updateUiState { copy(confirmPassword = uiAction.confirmPassword) }
+            is SignUpContract.UiAction.ChangeCheckbox -> updateUiState { copy(checkboxState = uiAction.checkboxState) }
         }
 
     }
@@ -76,6 +77,7 @@ object SignUpContract {
         val email: String = "",
         val password: String = "",
         val confirmPassword: String = "",
+        val checkboxState: Boolean = false,
     )
 
     sealed class UiAction {
@@ -83,6 +85,7 @@ object SignUpContract {
         data class ChangeEmail(val email: String) : UiAction()
         data class ChangePassword(val password: String) : UiAction()
         data class ChangeConfirmPassword(val confirmPassword: String) : UiAction()
+        data class ChangeCheckbox(val checkboxState: Boolean) : UiAction()
     }
 
     sealed class UiEffect {
