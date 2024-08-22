@@ -80,4 +80,5 @@ dependencies {
     implementation(libs.firebase.auth)
 
     implementation(libs.splash)
+    implementation(libs.androidx.ui.text.google.fonts)
 }
