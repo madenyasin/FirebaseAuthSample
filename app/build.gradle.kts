@@ -81,4 +81,5 @@ dependencies {
 
     implementation(libs.splash)
     implementation(libs.androidx.ui.text.google.fonts)
+    implementation(libs.coil)
 }
