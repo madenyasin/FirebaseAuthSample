@@ -10,6 +10,7 @@ import androidx.navigation.compose.composable
 import com.yasinmaden.firebaseauthsample.ui.main.MainScreen
 import com.yasinmaden.firebaseauthsample.ui.login.LoginScreen
 import com.yasinmaden.firebaseauthsample.ui.login.LoginViewModel
+import com.yasinmaden.firebaseauthsample.ui.main.MainViewModel
 import com.yasinmaden.firebaseauthsample.ui.sign_up.SignUpScreen
 import com.yasinmaden.firebaseauthsample.ui.sign_up.SignUpViewModel
 
@@ -31,7 +32,15 @@ fun NavGraph(navController: NavHostController) {
         }
 
         composable("main") {
-            MainScreen()
+            val viewModel: MainViewModel = hiltViewModel()
+            val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+            val uiEffect = viewModel.uiEffect
+            MainScreen(
+                uiState = uiState,
+                uiEffect = uiEffect,
+                onAction = viewModel::onAction,
+                onNavigateLoginScreen = { navController.navigate("login") }
+            )
         }
 
         composable("sign_up") {
