@@ -7,7 +7,6 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.yasinmaden.firebaseauthsample.ui.login.LoginContract
 import com.yasinmaden.firebaseauthsample.ui.main.MainScreen
 import com.yasinmaden.firebaseauthsample.ui.login.LoginScreen
 import com.yasinmaden.firebaseauthsample.ui.login.LoginViewModel
@@ -44,6 +43,8 @@ fun NavGraph(navController: NavHostController) {
                 uiEffect = uiEffect,
                 onAction = viewModel::onAction,
                 onNavigateMainScreen = { navController.navigate("main") },
+                onNavigateLoginScreen = { navController.navigate("login") },
+                onBackButtonClick = { navController.popBackStack() }
             )
         }
 
