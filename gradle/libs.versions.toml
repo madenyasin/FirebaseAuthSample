@@ -16,6 +16,7 @@ ksp = "2.0.0-1.0.21"
 googleServices = "4.4.2"
 splash = "1.2.0-alpha01"
 uiTextGoogleFonts = "1.6.8"
+coil = "2.7.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -45,7 +46,7 @@ firebase-auth = { group = "com.google.firebase", name = "firebase-auth-ktx" }
 
 splash = { group = "androidx.core", name = "core-splashscreen", version.ref = "splash" }
 androidx-ui-text-google-fonts = { group = "androidx.compose.ui", name = "ui-text-google-fonts", version.ref = "uiTextGoogleFonts" }
-
+coil = {group = "io.coil-kt", name = "coil-compose", version.ref = "coil"}
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
